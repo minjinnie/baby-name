@@ -1,0 +1,244 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app__main {
+  flex: 1;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  background: var(--lr-white);
+}
+
+.site-header__top {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  gap: 2.5rem;
+  padding: 0.45rem 3.5rem 0.9rem;
+  background: var(--lr-green-light);
+  font-size: 0.75rem;
+}
+
+/* Scalloped bottom edge: green half-circles hanging below the bar */
+.site-header__top::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% - 1px);
+  height: 11px;
+  background: radial-gradient(circle at 12px 1px, var(--lr-green-light) 10px, transparent 10.5px) repeat-x;
+  background-size: 24px 11px;
+  pointer-events: none;
+}
+
+.site-header__top a {
+  position: relative;
+  z-index: 1;
+  color: var(--lr-text);
+  text-decoration: none;
+}
+
+.site-header__top a:hover {
+  text-decoration: underline;
+}
+
+.site-header__main {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.5rem 5rem 0.75rem 1.5rem;
+}
+
+.site-header__logo img {
+  display: block;
+  width: 140px;
+  height: auto;
+}
+
+.site-header__nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  font-size: 0.8rem;
+}
+
+.site-header__nav a {
+  color: var(--lr-text);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.site-header__nav a:hover,
+.site-header__nav a.active {
+  border-bottom-color: var(--lr-green-light);
+}
+
+.site-header__search {
+  display: flex;
+  align-items: center;
+  width: 170px;
+  border: 1px solid var(--lr-border);
+  border-radius: 999px;
+  padding-left: 0.75rem;
+  overflow: hidden;
+}
+
+.site-header__search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  font: inherit;
+  font-size: 0.7rem;
+  background: transparent;
+}
+
+.site-header__search button {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: var(--lr-accent);
+  color: var(--lr-white);
+  cursor: pointer;
+}
+
+.site-header__search:focus-within {
+  border-color: var(--lr-accent);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  background: linear-gradient(180deg, var(--lr-blue-light) 0%, var(--lr-yellow-light) 100%);
+  padding: 2.25rem 3rem 5rem;
+}
+
+.site-footer__inner {
+  display: flex;
+  gap: 2.5rem;
+  max-width: 1100px;
+}
+
+.site-footer__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-footer__logo img {
+  display: block;
+  width: 140px;
+  height: auto;
+}
+
+.site-footer__social {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer__social a {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--lr-pink-light);
+  color: var(--lr-text);
+  transition: opacity 0.15s;
+}
+
+.site-footer__social a:hover {
+  opacity: 0.8;
+}
+
+.site-footer__col {
+  margin-top: 3rem;
+  min-width: 130px;
+}
+
+.site-footer__col h3 {
+  margin: 0 0 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.site-footer__col ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 0.65rem;
+  color: var(--lr-text);
+}
+
+.site-footer__col a {
+  color: var(--lr-text);
+  text-decoration: none;
+}
+
+.site-footer__col a:hover {
+  text-decoration: underline;
+}
+
+.site-footer__col a[href^="tel:"],
+.site-footer__col a[href^="mailto:"] {
+  color: var(--lr-accent);
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 760px) {
+  .site-header__top {
+    padding-inline: 1rem;
+    gap: 1.25rem;
+  }
+
+  .site-header__main {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0.5rem 1rem 0.75rem;
+    gap: 1rem;
+  }
+
+  .site-header__logo img {
+    width: 100px;
+  }
+
+  .site-header__nav {
+    order: 3;
+    flex-basis: 100%;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .site-footer {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .site-footer__inner {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .site-footer__col {
+    margin-top: 0;
+  }
+}

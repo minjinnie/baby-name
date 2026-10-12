@@ -18,6 +18,10 @@ This project will be a FamilySearch based baby name generator web app. It will s
 
 <img src="babynames.png" alt="Welcome Page" width="50%">
 
+### Other Pages
+
+<img src="pages.png" alt="Other Pages" width="75%">
+
 ## Getting Started
 
 ### Prerequisites

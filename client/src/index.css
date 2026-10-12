@@ -1,0 +1,34 @@
+/* Global styles: app-wide color palette, font, and base element styles. */
+
+:root {
+  /* Palette */
+  --lr-green-light: #d2eaab;
+  --lr-yellow-light: #faf8c0;
+  --lr-pink-light: #f6d9e0;
+  --lr-gray-dark: #595959;
+  --lr-blue-light: #d6e5f1;
+  --lr-green-olive: #7d9753;
+
+  /* Neutrals */
+  --lr-white: #fff;
+  --lr-border: #ccc;
+
+  /* Roles */
+  --lr-text: var(--lr-gray-dark);
+  --lr-accent: var(--lr-green-olive);
+
+  --lr-font: "Comfortaa", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--lr-font);
+  color: var(--lr-text);
+  background: var(--lr-white);
+}
