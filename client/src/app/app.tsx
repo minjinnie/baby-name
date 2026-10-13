@@ -1,6 +1,7 @@
 import { lazy } from "react";
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, RouterProvider } from "react-router";
 import type { RouteObject } from "react-router";
+import AuthProvider from "@/auth/AuthProvider";
 import RootLayout from "@/layouts/RootLayout";
 
 // Views are code-split: each one is downloaded the first time its route is visited.
@@ -9,7 +10,7 @@ const CreateAccountView = lazy(() => import("@/views/CreateAccountView"));
 const LoginView = lazy(() => import("@/views/LoginView"));
 const NotFoundView = lazy(() => import("@/views/NotFoundView"));
 
-export const routes: RouteObject[] = [
+const routes: RouteObject[] = [
   {
     path: "/",
     element: <RootLayout />,
@@ -23,4 +24,14 @@ export const routes: RouteObject[] = [
   },
 ];
 
-export const router = createBrowserRouter(routes);
+// Created once, outside the component, so it isn't rebuilt on every render.
+const router = createBrowserRouter(routes);
+
+/** The whole app: shared providers around the router. */
+export default function App() {
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
+}
