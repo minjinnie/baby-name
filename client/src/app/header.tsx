@@ -1,5 +1,9 @@
-import { useState, type SubmitEvent } from "react";
-import { Link, NavLink } from "react-router";
+import { useEffect, useId, useRef, useState, type SubmitEvent } from "react";
+import { Link, NavLink, useNavigate } from "react-router";
+import { LOGIN_PATH } from "@/auth/config";
+import type { User } from "@/auth/types";
+import { useAuth } from "@/auth/useAuth";
+import type { LoginLocationState } from "@/components/session/IdleSessionManager";
 
 const NAV_LINKS = [
   { to: "/", label: "Home" },
@@ -14,6 +18,7 @@ type HeaderProps = {
 };
 
 export default function Header({ onSearch }: HeaderProps) {
+  const { user } = useAuth();
   const [query, setQuery] = useState("");
 
   function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
@@ -24,8 +29,14 @@ export default function Header({ onSearch }: HeaderProps) {
   return (
     <header className="site-header">
       <div className="site-header__top">
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
+        {user ? (
+          <UserMenu user={user} />
+        ) : (
+          <>
+            <Link to="/login">Login</Link>
+            <Link to="/register">Register</Link>
+          </>
+        )}
       </div>
 
       <div className="site-header__main">
@@ -58,5 +69,82 @@ export default function Header({ onSearch }: HeaderProps) {
         </form>
       </div>
     </header>
+  );
+}
+
+/** The signed-in user's first name, which opens a dropdown with a Log out option. */
+function UserMenu({ user }: { user: User }) {
+  const { signOut } = useAuth();
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const logOutRef = useRef<HTMLButtonElement>(null);
+  const menuId = useId();
+  const firstName = user.name.trim().split(/\s+/)[0];
+
+  // While open: focus Log out, and close on a click outside or Escape.
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+    logOutRef.current?.focus();
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!menuRef.current?.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        triggerRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open]);
+
+  function handleLogOut() {
+    setOpen(false);
+    void signOut();
+    const state: LoginLocationState = { reason: "signed-out" };
+    navigate(LOGIN_PATH, { replace: true, state });
+  }
+
+  return (
+    <div className="user-menu" ref={menuRef}>
+      <button
+        ref={triggerRef}
+        type="button"
+        className="user-menu__trigger"
+        aria-haspopup="menu"
+        aria-expanded={open}
+        aria-controls={menuId}
+        onClick={() => setOpen((prev) => !prev)}
+      >
+        <span className="user-menu__name">{firstName}</span>
+        <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true">
+          <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
+      {open && (
+        <div id={menuId} className="user-menu__dropdown" role="menu">
+          <div className="user-menu__info">
+            <p className="user-menu__full-name">{user.name}</p>
+            <p className="user-menu__email">{user.email}</p>
+          </div>
+          <button ref={logOutRef} type="button" role="menuitem" className="user-menu__item" onClick={handleLogOut}>
+            Log out
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
