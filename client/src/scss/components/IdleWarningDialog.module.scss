@@ -1,0 +1,128 @@
+@use "../abstracts" as *;
+
+.dialog {
+  width: min(420px, calc(100vw - 32px));
+  padding: 32px 28px 28px;
+  border: 0;
+  border-top: 6px solid $palette-yellow;
+  border-radius: 12px;
+  background: $color-surface;
+  box-shadow: $shadow-dialog;
+  color: $color-text;
+  text-align: center;
+
+  &::backdrop {
+    background: $color-backdrop-overlay;
+  }
+
+  &[open] {
+    animation: dialog-in 180ms ease-out;
+  }
+
+  @include down("small") {
+    padding: 28px 20px 20px;
+  }
+
+  @include reduced-motion {
+    &[open] {
+      animation: none;
+    }
+  }
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: $color-warning-bg;
+  color: $palette-olive;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.message {
+  margin: 0;
+  text-wrap: balance;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: $color-label;
+}
+
+.countdown {
+  margin: 8px 0 24px;
+  font-size: 2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: $palette-olive;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+
+  // Primary action first on phones, where buttons stack.
+  @include down("small") {
+    flex-direction: column-reverse;
+  }
+}
+
+%button {
+  flex: 1;
+
+  // In the stacked phone layout, flex: 1 would override the height below.
+  @include down("small") {
+    flex: none;
+  }
+
+  height: 44px;
+  border-radius: $radius;
+  font: inherit;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: background-color $transition-fast, border-color $transition-fast;
+
+  &:focus-visible {
+    @include focus-ring($color-focus);
+  }
+
+  @include reduced-motion {
+    transition: none;
+  }
+}
+
+.primary {
+  @extend %button;
+  border: 0;
+  background: $color-accent;
+  color: $color-accent-text;
+  font-weight: 600;
+
+  &:hover {
+    background: $color-accent-hover;
+  }
+}
+
+.secondary {
+  @extend %button;
+  border: 1px solid $palette-gray;
+  background: $color-surface;
+  color: $palette-gray;
+
+  &:hover {
+    background: $color-backdrop;
+  }
+}

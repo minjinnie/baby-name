@@ -1,0 +1,76 @@
+@use "../abstracts" as *;
+
+// Form-level pieces shared by the signup and login forms.
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formError {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: $radius;
+  background: $color-error-bg;
+  font-size: 0.8125rem;
+  color: $color-error;
+}
+
+.submit {
+  height: $control-height;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 2px;
+  background: $color-accent;
+  box-shadow: 0 4px 10px rgba($color-accent-text, 0.15);
+  font: inherit;
+  font-size: 0.875rem;
+  color: $color-accent-text;
+  cursor: pointer;
+  transition:
+    background-color $transition-fast,
+    transform $transition-fast;
+
+  &:hover:not(:disabled) {
+    background: $color-accent-hover;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    @include focus-ring($color-accent-text);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: progress;
+  }
+
+  @include reduced-motion {
+    transition: none;
+  }
+}
+
+.footnote {
+  margin: 12px 0 0;
+  font-size: 0.8125rem;
+  text-align: center;
+  color: $color-label;
+
+  a {
+    color: $color-link;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      @include focus-ring($color-focus);
+      border-radius: 2px;
+    }
+  }
+}

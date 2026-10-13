@@ -1,9 +1,15 @@
+import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    // `@/` points at `src/`, e.g. `import CreateAccount from "@/components/register/CreateAccount"`.
+    // Keep in sync with `paths` in tsconfig.json.
+    alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) },
+  },
   server: {
-    proxy: { "/api": "http://localhost:3001" },
+    proxy: { "/api": "http://localhost:3000" },
   },
 });

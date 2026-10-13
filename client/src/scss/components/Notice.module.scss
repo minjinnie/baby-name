@@ -1,0 +1,36 @@
+@use "../abstracts" as *;
+
+.notice {
+  padding: 12px 14px;
+  border-left: 4px solid transparent;
+  border-radius: $radius;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: $palette-gray;
+}
+
+.title {
+  margin: 0 0 2px;
+  font-weight: 700;
+  color: $color-text;
+}
+
+.body {
+  margin: 0;
+}
+
+.info {
+  background: $color-info-bg;
+  border-left-color: color-mix(in srgb, #{$palette-blue} 50%, #{$palette-gray});
+}
+
+.warning {
+  background: $color-warning-bg;
+  border-left-color: $palette-olive;
+}
+
+.error {
+  background: $color-error-bg;
+  border-left-color: $color-error;
+  color: $color-error;
+}

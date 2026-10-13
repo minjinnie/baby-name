@@ -1,0 +1,14 @@
+// Sticky-footer layout: header and footer take their natural height and
+// <main> stretches to fill whatever is left of the viewport.
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}

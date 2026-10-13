@@ -1,0 +1,115 @@
+@use "../abstracts" as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 0.8125rem;
+  color: $color-label;
+}
+
+.inputFrame {
+  display: flex;
+  align-items: center;
+  height: $control-height;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  background: $color-surface;
+  transition:
+    border-color $transition-fast,
+    box-shadow $transition-fast;
+
+  &:focus-within {
+    border-color: $color-focus;
+    box-shadow: 0 0 0 3px rgba($color-focus, 0.25);
+  }
+
+  @include reduced-motion {
+    transition: none;
+  }
+}
+
+.inputFrameInvalid {
+  &,
+  &:focus-within {
+    border-color: $color-error;
+    box-shadow: 0 0 0 3px rgba($color-error, 0.12);
+  }
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  // 16px keeps iOS Safari from zooming in on focus.
+  font-size: 1rem;
+  color: $color-text;
+  outline: none;
+}
+
+.visibilityToggle {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0 $radius $radius 0;
+  background: transparent;
+  color: $color-label;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-text;
+  }
+
+  &:focus-visible {
+    @include focus-ring($color-focus, -2px);
+  }
+}
+
+.fieldHint,
+.fieldError {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.fieldHint {
+  color: $color-muted;
+}
+
+.fieldError {
+  color: $color-error;
+}
+
+// ---- Checkbox --------------------------------------------------------
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  font-size: 0.8125rem;
+  color: $color-label;
+  cursor: pointer;
+
+  input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: $palette-olive;
+    cursor: pointer;
+
+    &:focus-visible {
+      @include focus-ring($color-focus);
+    }
+  }
+}

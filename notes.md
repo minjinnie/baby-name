@@ -17,7 +17,7 @@
 | User activity | Frontend component | Backend endpoints | Database |
 | --- | --- | --- | --- |
 | View home page | home.tsx | none | none |
-| Register new user | unknown | POST /api/auth | `addUser` → users.get(email), users.set(email, user)<br>`createSession` → sessions.set(token, userId) |
+| Register new user | CreateAccountView.tsx | POST /api/auth | `addUser` → users.get(email), users.set(email, user)<br>`createSession` → sessions.set(token, userId) |
 | Login new user | unknown | PUT /api/auth | `verifyUser` → users.get(email)<br>`createSession` → sessions.set(token, userId) |
 | Logout | unknown | DELETE /api/auth | `getUserByToken` → sessions.get(token)<br>`deleteSession` → sessions.delete(token) |
 | Generate name | unknown | GET /api/name | `getUserByToken` → sessions.get(token)<br>`getRandomName` → read fakeAncestry.persons (filter by gender) |

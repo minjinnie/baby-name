@@ -1,0 +1,53 @@
+@use "sass:color";
+
+// Design tokens shared across the app.
+
+// Brand palette
+$palette-green: #d2eaab;
+$palette-yellow: #faf8c1;
+$palette-pink: #f6d8e0;
+$palette-gray: #585858;
+$palette-blue: #d5e5f1;
+$palette-olive: #7c9753;
+
+// Colors
+$color-surface: #ffffff;
+$color-backdrop: #f4f5f7;
+$color-text: #111111;
+$color-muted: #8a93a6;
+$color-label: $palette-gray;
+$color-border: #c7ccd4;
+$color-divider: #eef0f3;
+$color-placeholder-start: #eceae6;
+$color-placeholder-end: #dcd8d1;
+$color-placeholder-icon: #9a948a;
+
+$color-accent: $palette-green;
+$color-accent-hover: color.mix($palette-green, $palette-olive, 85%);
+$color-accent-text: #3d4a2c;
+$color-focus: $palette-olive;
+
+$color-error: #c23b3b;
+$color-error-bg: $palette-pink;
+$color-warning-bg: $palette-yellow;
+$color-info-bg: $palette-blue;
+$color-link: #2f6fde;
+
+// Overlay behind dialogs
+$color-backdrop-overlay: rgba($palette-gray, 0.45);
+$shadow-dialog: 0 20px 50px rgba(17, 24, 39, 0.2);
+
+// Typography
+$font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+// Shape & motion
+$radius: 6px;
+$control-height: 44px;
+$transition-fast: 150ms ease;
+$shadow-card: 0 10px 40px rgba(17, 24, 39, 0.08);
+
+// Breakpoints (max-width, desktop-first)
+$breakpoints: (
+  "medium": 960px,
+  "small": 640px,
+);

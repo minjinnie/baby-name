@@ -1,0 +1,118 @@
+@use "../abstracts" as *;
+
+// Shared by the signup and login pages: image on one side, form on the other.
+
+.page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0px, 3vw, 32px);
+  background: $color-backdrop;
+
+  @include down("small") {
+    align-items: stretch;
+    padding: 0;
+    background: $color-surface;
+  }
+}
+
+// Large: image and form side by side, roughly 55 / 45.
+.card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  width: 100%;
+  max-width: 1040px;
+  min-height: 560px;
+  background: $color-surface;
+  box-shadow: $shadow-card;
+  overflow: hidden;
+
+  // Medium: keep two columns, give the form more room.
+  @include down("medium") {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+    min-height: 520px;
+  }
+
+  // Small: stack the image above the form as a banner.
+  @include down("small") {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 0;
+    box-shadow: none;
+  }
+}
+
+.media {
+  position: relative;
+  min-height: 100%;
+  background: $color-divider;
+
+  @include down("small") {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    max-height: 240px;
+  }
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(160deg, $color-placeholder-start 0%, $color-placeholder-end 100%);
+  color: $color-placeholder-icon;
+  font-size: 0.875rem;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px clamp(32px, 6vw, 72px);
+
+  @include down("medium") {
+    padding: 40px 32px;
+  }
+
+  @include down("small") {
+    justify-content: flex-start;
+    padding: 28px 16px 40px;
+  }
+}
+
+.header {
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid $color-divider;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: $color-muted;
+
+  @include down("small") {
+    max-width: none;
+  }
+}
