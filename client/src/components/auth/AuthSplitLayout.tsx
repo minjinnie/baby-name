@@ -2,22 +2,15 @@ import { useId, useState } from "react";
 import type { ReactNode } from "react";
 import styles from "@/scss/components/AuthSplitLayout.module.scss";
 
-// The hero image is optional: a plain `import` would break the build if the file
-// were missing, but a glob simply matches nothing. Drop `baby-hero.jpg` (or .png,
-// .webp, …) into src/assets and it is picked up automatically.
-const heroImages = import.meta.glob<string>("../../assets/baby-hero.{jpg,jpeg,png,webp,avif}", {
-  eager: true,
-  import: "default",
-});
-const defaultHeroImage: string | undefined = Object.values(heroImages)[0];
-
+// Served from client/public.
+const DEFAULT_HERO_IMAGE = "/baby-hero.jpg";
 const DEFAULT_HERO_ALT = "Baby sitting on a white bed";
 
 interface AuthSplitLayoutProps {
   title: string;
   subtitle: string;
   /**
-   * Image for the left panel. Defaults to `src/assets/baby-hero.*`. A styled
+   * Image for the left panel. Defaults to `public/baby-hero.jpg`. A styled
    * placeholder is shown if there is no image or it fails to load.
    */
   imageSrc?: string;
@@ -30,7 +23,7 @@ interface AuthSplitLayoutProps {
 export default function AuthSplitLayout({
   title,
   subtitle,
-  imageSrc = defaultHeroImage,
+  imageSrc = DEFAULT_HERO_IMAGE,
   imageAlt = DEFAULT_HERO_ALT,
   children,
 }: AuthSplitLayoutProps) {
