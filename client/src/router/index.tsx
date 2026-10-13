@@ -7,7 +7,6 @@ import RootLayout from "@/layouts/RootLayout";
 const HomeView = lazy(() => import("@/views/HomeView"));
 const CreateAccountView = lazy(() => import("@/views/CreateAccountView"));
 const LoginView = lazy(() => import("@/views/LoginView"));
-const ComingSoonView = lazy(() => import("@/views/ComingSoonView"));
 
 export const routes: RouteObject[] = [
   {
@@ -17,8 +16,6 @@ export const routes: RouteObject[] = [
       { index: true, element: <HomeView /> },
       { path: "register", element: <CreateAccountView /> },
       { path: "login", element: <LoginView /> },
-      // Header and footer links to pages that aren't built yet land here.
-      { path: "*", element: <ComingSoonView /> },
     ],
   },
 ];
