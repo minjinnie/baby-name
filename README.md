@@ -13,6 +13,7 @@ This project will be a FamilySearch based baby name generator web app. It will s
 ### Logo
 
 <img src="client/public/LittleRoots_Logo.png" alt="LittleRoots Logo" width="25%">
+<img src="client/public/LittleRoots_Logo_Title.png" alt="LittleRoots Logo" width="25%">
 
 ### Welcome Page
 
