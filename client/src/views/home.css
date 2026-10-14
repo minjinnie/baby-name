@@ -1,0 +1,184 @@
+.home {
+  width: 100%;
+  background: #ffffff;
+}
+
+.home__hero {
+  width: 100%;
+  background: #d5dfe1;
+}
+
+.home__hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 530px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+}
+
+.home__hero-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 420px;
+  border-radius: 12px;
+  background: #bccdd0;
+  color: #70878b;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.home__hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.home__hero-content h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-shadow: 1px 2px 2px #88a65d;
+}
+
+.home__hero-content p {
+  max-width: 380px;
+  margin: 0;
+  color: #364b50;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.home__discover-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  min-height: 45px;
+  margin-top: 0.5rem;
+  padding: 0.6rem 1.5rem;
+  border-radius: 999px;
+  background: #d2e9ae;
+  color: #222222;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.home__how {
+  width: 100%;
+  background: #ffffff;
+}
+
+.home__how-inner {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 2rem 5rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.home__how h2 {
+  margin: 0 0 0.5rem;
+  color: #222222;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.home__how p {
+  margin: 0;
+  color: #555555;
+  font-size: 0.95rem;
+}
+
+.home__steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.home__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.home__step-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 85px;
+  border-radius: 45%;
+  background: #b8eaf5;
+}
+
+.home__step-icon span {
+  font-size: 2.5rem;
+}
+
+.home__step h3 {
+  margin: 0;
+  color: #222222;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .home__hero-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  .home__hero-image {
+    min-height: 300px;
+  }
+
+  .home__hero-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .home__steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem 1rem;
+  }
+
+  .home__how-inner {
+    padding: 3rem 1.5rem 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home__hero-image {
+    min-height: 240px;
+  }
+
+  .home__hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .home__step-icon {
+    width: 90px;
+    height: 75px;
+  }
+
+  .home__step h3 {
+    font-size: 0.8rem;
+  }
+}

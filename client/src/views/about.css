@@ -1,0 +1,304 @@
+
+/* ==================================
+   About Page
+================================== */
+
+.about-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #1d1717;
+}
+
+.about-container {
+  width: 100%;
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 20px 24px 40px;
+  box-sizing: border-box;
+}
+
+/* ==================================
+   Breadcrumb
+================================== */
+
+.about-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.about-breadcrumb a {
+  color: #1d1717;
+  text-decoration: none;
+}
+
+.about-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.about-breadcrumb-separator {
+  color: #1d1717;
+}
+
+/* Current Page - Green */
+.about-breadcrumb a.about-breadcrumb-current,
+.about-breadcrumb a.about-breadcrumb-current:visited {
+  color: #83a14e;
+  text-decoration: none;
+}
+
+.about-breadcrumb a.about-breadcrumb-current:hover {
+  color: #6f8e3e;
+  text-decoration: underline;
+}
+
+/* ==================================
+   Hero Section
+================================== */
+
+.about-hero {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 34px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.about-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.about-hero-content h1 {
+  margin: 0 0 24px;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.7px;
+  color: #1b1010;
+}
+
+.about-hero-content p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #242424;
+}
+
+/* ==================================
+   Contact Us Button
+================================== */
+
+.about-contact-button,
+.about-contact-button:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  width: 190px;
+  min-height: 47px;
+  margin-top: 18px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+
+  background-color: #d2e9ad;
+  color: #222222;
+  border: none;
+  border-radius: 30px;
+
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.about-contact-button:hover {
+  background-color: #c1dd92;
+  color: #222222;
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+/* ==================================
+   Hero Image
+================================== */
+
+.about-hero-image {
+  width: 100%;
+  height: 340px;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.about-hero-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==================================
+   FAQ Section
+================================== */
+
+.about-faq {
+  border: 1.5px solid #d5d5d5;
+  border-radius: 11px;
+  padding: 20px 21px 18px;
+}
+
+.about-faq h2 {
+  margin: 0 0 16px;
+  font-size: 23px;
+  font-weight: 600;
+  color: #1d1717;
+}
+
+.about-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.about-faq-item {
+  width: 100%;
+}
+
+.about-faq-question {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 9px 0;
+
+  background: transparent;
+  border: none;
+  color: #222222;
+
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 400;
+  text-align: left;
+  line-height: 1.5;
+
+  cursor: pointer;
+}
+
+.about-faq-question:hover {
+  color: #6f8e3e;
+}
+
+.about-faq-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  flex-shrink: 0;
+
+  font-size: 23px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.about-faq-answer {
+  margin: 8px 0 14px 29px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #555555;
+}
+
+.about-faq [hidden] {
+  display: none;
+}
+
+/* ==================================
+   Responsive - Tablet
+================================== */
+
+@media (max-width: 768px) {
+  .about-container {
+    padding: 20px;
+  }
+
+  .about-hero {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .about-hero-content h1 {
+    font-size: 28px;
+  }
+
+  .about-hero-content h1 br {
+    display: none;
+  }
+
+  .about-contact-button {
+    align-self: flex-start;
+  }
+
+  .about-hero-image {
+    height: 300px;
+  }
+
+  .about-faq {
+    padding: 20px 16px;
+  }
+}
+
+/* ==================================
+   Responsive - Mobile
+================================== */
+
+@media (max-width: 480px) {
+  .about-container {
+    padding: 16px;
+  }
+
+  .about-breadcrumb {
+    margin-bottom: 24px;
+    font-size: 13px;
+  }
+
+  .about-hero-content h1 {
+    font-size: 25px;
+  }
+
+  .about-hero-content p {
+    font-size: 13px;
+  }
+
+  .about-hero-image {
+    height: 250px;
+    border-radius: 16px;
+  }
+
+  .about-contact-button {
+    width: 160px;
+    min-height: 44px;
+  }
+
+  .about-faq h2 {
+    font-size: 21px;
+  }
+
+  .about-faq-question {
+    font-size: 14px;
+    gap: 10px;
+  }
+
+  .about-faq-answer {
+    margin-left: 25px;
+  }
+}

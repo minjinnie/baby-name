@@ -41,7 +41,7 @@ export default function Header({ onSearch }: HeaderProps) {
 
       <div className="site-header__main">
         <Link to="/" className="site-header__logo">
-          <img src="/LittleRoots_Logo.png" alt="LittleRoots" />
+          <img src="/LittleRoots_Logo_Title.png" alt="LittleRoots" />
         </Link>
 
         <nav className="site-header__nav" aria-label="Main">

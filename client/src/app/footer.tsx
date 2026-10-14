@@ -1,3 +1,4 @@
+
 import { Link } from "react-router";
 
 const SOCIAL_LINKS = [
@@ -6,9 +7,30 @@ const SOCIAL_LINKS = [
     href: "https://instagram.com",
     icon: (
       <>
-        <rect x="6" y="6" width="12" height="12" rx="3.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
-        <circle cx="12" cy="12" r="2.8" fill="none" stroke="currentColor" strokeWidth="1.8" />
-        <circle cx="15.6" cy="8.4" r="0.9" fill="currentColor" />
+        <rect
+          x="6"
+          y="6"
+          width="12"
+          height="12"
+          rx="3.5"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+        />
+        <circle
+          cx="12"
+          cy="12"
+          r="2.8"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+        />
+        <circle
+          cx="15.6"
+          cy="8.4"
+          r="0.9"
+          fill="currentColor"
+        />
       </>
     ),
   },
@@ -48,15 +70,31 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="site-footer__inner">
+
+        {/* Logo and Social Media */}
         <div className="site-footer__brand">
           <Link to="/" className="site-footer__logo">
-            <img src="/LittleRoots_Logo.png" alt="LittleRoots" />
+            <img
+              src="/LittleRoots_Logo.png"
+              alt="LittleRoots"
+            />
           </Link>
+
           <ul className="site-footer__social">
             {SOCIAL_LINKS.map(({ label, href, icon }) => (
               <li key={label}>
-                <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
-                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    aria-hidden="true"
+                  >
                     {icon}
                   </svg>
                 </a>
@@ -65,25 +103,46 @@ export default function Footer() {
           </ul>
         </div>
 
+        {/* My Account */}
         <div className="site-footer__col">
           <h3>My account</h3>
           <ul>
-            <li><Link to="/discover">Name Generator</Link></li>
-            <li><Link to="/terms">Terms of use</Link></li>
-            <li><Link to="/favorites">Favorites</Link></li>
-            <li><Link to="/feedback">Submit Your feedback</Link></li>
+            <li>
+              <Link to="/discover">Name Generator</Link>
+            </li>
+            <li>
+              <Link to="/terms">Terms of use</Link>
+            </li>
+            <li>
+              <Link to="/favorites">Favorites</Link>
+            </li>
+            <li>
+              <Link to="/feedback">Submit Your feedback</Link>
+            </li>
           </ul>
         </div>
 
+        {/* Customer Service */}
         <div className="site-footer__col">
           <h3>Customer service</h3>
           <ul>
             <li>Monday to Friday</li>
             <li>9am - 5pm (UTC)</li>
-            <li>Call us: <a href="tel:1234567868">123-456-7868</a></li>
-            <li>Email us: <a href="mailto:info@example.com">info@example.com</a></li>
+            <li>
+              Call us:{" "}
+              <a href="tel:1234567868">
+                123-456-7868
+              </a>
+            </li>
+            <li>
+              Email us:{" "}
+              <a href="mailto:hello@littleroots.com">
+                hello@littleroots.com
+              </a>
+            </li>
           </ul>
         </div>
+
       </div>
     </footer>
   );

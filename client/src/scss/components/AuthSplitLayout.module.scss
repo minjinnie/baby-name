@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: center;
   padding: clamp(0px, 3vw, 32px);
-  background: $color-backdrop;
+  background: #fafdf5;
 
   @include down("small") {
     align-items: stretch;
