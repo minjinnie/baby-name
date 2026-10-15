@@ -1,0 +1,5 @@
+{
+  // Used by `npm run build`; tsconfig.json still covers the tests for typecheck and the editor.
+  "extends": "./tsconfig.json",
+  "exclude": ["src/tests"]
+}
