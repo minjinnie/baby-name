@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef, useState, type SubmitEvent } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
 import { LOGIN_PATH } from "@/auth/config";
-import type { User } from "@/auth/types";
+import type { User } from "shared";
 import { useAuth } from "@/auth/useAuth";
 import type { LoginLocationState } from "@/components/session/IdleSessionManager";
 

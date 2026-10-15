@@ -1,9 +1,4 @@
-/** Public user shape returned by the auth endpoints. */
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-}
+import type { User } from "shared";
 
 /** What the server returns on register/login, and what the client keeps while signed in. */
 export interface Session {

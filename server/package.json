@@ -19,6 +19,7 @@
     "express": "^5.2.1"
   },
   "devDependencies": {
+    "shared": "*",
     "@eslint/js": "^10.0.1",
     "@types/bcrypt": "^6.0.0",
     "@types/express": "^5.0.6",

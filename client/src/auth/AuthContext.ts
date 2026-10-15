@@ -1,6 +1,7 @@
 import { createContext } from "react";
 import type { RequestOptions } from "@/api/client";
-import type { Session, User } from "@/auth/types";
+import type { Session } from "@/auth/types";
+import type { User } from "shared";
 
 export interface SignInOptions {
   remember?: boolean;

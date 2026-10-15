@@ -1,7 +1,7 @@
 import express from 'express';
 import type { Request, Response, NextFunction } from 'express';
 import { addUser, verifyUser, createSession, getUserByToken, deleteSession } from '../database/database.ts';
-import type { User } from '../database/database.ts';
+import type { User } from 'shared';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace

@@ -1,12 +1,7 @@
 import { randomBytes, randomUUID } from 'node:crypto';
 import bcrypt from 'bcrypt';
+import type { User } from 'shared';
 import { fakeAncestry } from './fakeData.ts';
-
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-}
 
 interface StoredUser extends User {
   passwordHash: string;
