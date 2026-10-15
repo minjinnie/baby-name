@@ -101,3 +101,7 @@ export function addFavorite(userId: string, favorite: FavoriteName): FavoriteNam
   favoritesByUser.set(userId, favorites);
   return favorites;
 }
+
+export function listFavorites(userId: string): FavoriteName[] {
+  return favoritesByUser.get(userId) ?? [];
+}

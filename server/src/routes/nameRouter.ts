@@ -1,6 +1,6 @@
 import express from 'express';
 import type { Request, Response } from 'express';
-import { getRandomName, addFavorite } from '../database/database.ts';
+import { getRandomName, addFavorite, listFavorites } from '../database/database.ts';
 import type { NameGender } from '../database/database.ts';
 import { authenticateToken } from './authRouter.ts';
 
@@ -30,6 +30,14 @@ const nameRouter = Object.assign(express.Router(), {
       description: 'Save a name as a favorite',
       example: `curl -X POST localhost:3000/api/name -H 'Content-Type: application/json' -H 'Authorization: Bearer abc123' -d '{"name":"Hazel", "gender":"girl"}'`,
       response: { favorites: [{ name: 'Hazel', gender: 'girl' }] },
+    },
+    {
+      method: 'GET',
+      path: '/api/name/favorites',
+      requiresAuth: true,
+      description: 'Get all of your saved favorite names',
+      example: `curl localhost:3000/api/name/favorites -H 'Authorization: Bearer abc123'`,
+      response: { favorites: [{ name: 'Hazel', gender: 'girl' }, { name: 'Oliver', gender: 'boy' }] },
     },
   ] as EndpointDoc[],
 });
@@ -70,6 +78,12 @@ nameRouter.post('/', authenticateToken, (req: Request, res: Response) => {
     return;
   }
   res.status(201).json({ favorites });
+});
+
+// get list of favorites
+nameRouter.get('/favorites', authenticateToken, (req: Request, res: Response) => {
+  const favorites = listFavorites(req.user!.id);
+  res.json({ favorites });
 });
 
 export { nameRouter };

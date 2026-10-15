@@ -22,6 +22,7 @@
 | Logout | unknown | DELETE /api/auth | `getUserByToken` → sessions.get(token)<br>`deleteSession` → sessions.delete(token) |
 | Generate name | unknown | GET /api/name | `getUserByToken` → sessions.get(token)<br>`getRandomName` → read fakeAncestry.persons (filter by gender) |
 | Save name as favorite | unknown | POST /api/name | `getUserByToken` → sessions.get(token)<br>`addFavorite` → favorites.get(userId), favorites.set(userId, [...]) |
+| View favorites | unknown | GET /api/name/favorites | `getUserByToken` → sessions.get(token)<br>`listFavorites` → favorites.get(userId) |
 
 **Database collections** (key-value, in memory in `server/src/database/database.ts`):
 
