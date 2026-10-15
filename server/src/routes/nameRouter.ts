@@ -1,7 +1,7 @@
 import express from 'express';
 import type { Request, Response } from 'express';
 import { getRandomName, addFavorite, listFavorites } from '../database/database.ts';
-import type { NameGender } from '../database/database.ts';
+import type { NameGender } from 'shared';
 import { authenticateToken } from './authRouter.ts';
 
 interface EndpointDoc {

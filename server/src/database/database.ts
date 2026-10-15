@@ -1,6 +1,6 @@
 import { randomBytes, randomUUID } from 'node:crypto';
 import bcrypt from 'bcrypt';
-import type { User } from 'shared';
+import type { FavoriteName, NameGender, User } from 'shared';
 import { fakeAncestry } from './fakeData.ts';
 
 interface StoredUser extends User {
@@ -59,13 +59,6 @@ export function getUserByToken(token: string): User | null {
 
 export function deleteSession(token: string): void {
   sessions.delete(token);
-}
-
-export type NameGender = 'boy' | 'girl';
-
-export interface FavoriteName {
-  name: string;
-  gender?: NameGender;
 }
 
 const favoritesByUser = new Map<string, FavoriteName[]>(); // user id -> favorites
