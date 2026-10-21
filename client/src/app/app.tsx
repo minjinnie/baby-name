@@ -11,6 +11,7 @@ const CreateAccountView = lazy(() => import("@/views/CreateAccountView"));
 const LoginView = lazy(() => import("@/views/LoginView"));
 const NotFoundView = lazy(() => import("@/views/NotFoundView"));
 const ContactView = lazy(() => import("@/views/contact"));
+const DiscoverView = lazy(() => import("@/views/discover"));
 
 const routes: RouteObject[] = [
   {
@@ -21,6 +22,7 @@ const routes: RouteObject[] = [
       { path: "register", element: <CreateAccountView /> },
       { path: "login", element: <LoginView /> },
       { path: "about", element: <AboutView /> },
+      { path: "discover", element: <DiscoverView /> },
       { path: "contact", element: <ContactView /> },
       // Any path not matched above, including links to pages that aren't built yet.
       { path: "*", element: <NotFoundView /> },
