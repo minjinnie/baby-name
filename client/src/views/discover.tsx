@@ -2,6 +2,7 @@
 import { useState } from "react";
 import "./discover.css";
 import NameSwiper from "@/app/NameSwiper";
+import { Link } from "react-router";
 
 type Gender = "boy" | "girl" | "surprise";
 
@@ -46,12 +47,17 @@ export default function Discover() {
   return (
     <main className="discover-page">
       <div className="discover-container">
-        <div className="discover-breadcrumb">
-          Home <span>/</span>
-          <span className="discover-breadcrumb-current">
+        <nav className="discover-breadcrumb">
+          <Link to="/">Home</Link>
+          <span className="discover-breadcrumb-separator">/</span>
+          <Link
+            to="/discover"
+            className="discover-breadcrumb-current"
+            aria-current="page"
+          >
             Discover
-          </span>
-        </div>
+          </Link>
+        </nav>
 
         {!hasStarted ? (
           <section className="gender-selection">
