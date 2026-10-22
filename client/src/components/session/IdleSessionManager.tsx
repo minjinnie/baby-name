@@ -6,10 +6,12 @@ import { useAuth } from "@/auth/useAuth";
 import { useIdleTimeout } from "@/auth/useIdleTimeout";
 
 /** Why the user arrived at the login page; read by LoginView to explain it. */
-export type LogoutReason = "idle" | "signed-out";
+export type LogoutReason = "idle" | "signed-out" | "auth-required";
 
 export interface LoginLocationState {
   reason?: LogoutReason;
+  /** Page to return to after logging in (set by RequireAuth). */
+  from?: string;
 }
 
 /**

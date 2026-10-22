@@ -14,12 +14,13 @@ export default function LoginView() {
   const { signIn } = useAuth();
   const navigate = useNavigate();
   const { state } = useLocation();
-  const reason = (state as LoginLocationState | null)?.reason;
+  const { reason, from } = (state as LoginLocationState | null) ?? {};
 
   const handleLoggedIn = (session: Session, options: SignInOptions) => {
     signIn(session, options);
+    // Return to the members-only page that sent them here, or go home.
     // replace: going "back" from the app shouldn't return to the login form.
-    navigate(HOME_PATH, { replace: true });
+    navigate(from ?? HOME_PATH, { replace: true });
   };
 
   const notice =
@@ -30,6 +31,8 @@ export default function LoginView() {
       </Notice>
     ) : reason === "signed-out" ? (
       <Notice>You have been logged out.</Notice>
+    ) : reason === "auth-required" ? (
+      <Notice>Please log in to continue. Don't have an account yet? Sign up below.</Notice>
     ) : null;
 
   return (

@@ -9,3 +9,15 @@ export const LOGIN_PATH = "/login";
 
 /** Where users land after signing up or logging in. */
 export const HOME_PATH = "/";
+
+/**
+ * Pages only signed-in users can see. The header and footer hide links to these
+ * when nobody is logged in; the routes themselves are guarded by wrapping them in
+ * <RequireAuth /> in app/app.tsx. Keep the two in sync.
+ */
+export const MEMBERS_ONLY_PATHS: ReadonlySet<string> = new Set(["/discover", "/favorites", "/matches"]);
+
+/** Whether a link to `path` should be shown, given whether someone is signed in. */
+export function isLinkVisible(path: string, isAuthenticated: boolean): boolean {
+  return isAuthenticated || !MEMBERS_ONLY_PATHS.has(path);
+}

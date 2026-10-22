@@ -1,10 +1,11 @@
 import { useEffect, useId, useRef, useState, type SubmitEvent } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
-import { LOGIN_PATH } from "@/auth/config";
+import { LOGIN_PATH, isLinkVisible } from "@/auth/config";
 import type { User } from "shared";
 import { useAuth } from "@/auth/useAuth";
 import type { LoginLocationState } from "@/components/session/IdleSessionManager";
 
+// Members-only links (see MEMBERS_ONLY_PATHS) are hidden until someone signs in.
 const NAV_LINKS = [
   { to: "/", label: "Home" },
   { to: "/discover", label: "Discover" },
@@ -45,7 +46,7 @@ export default function Header({ onSearch }: HeaderProps) {
         </Link>
 
         <nav className="site-header__nav" aria-label="Main">
-          {NAV_LINKS.map(({ to, label }) => (
+          {NAV_LINKS.filter(({ to }) => isLinkVisible(to, Boolean(user))).map(({ to, label }) => (
             <NavLink key={to} to={to} end={to === "/"}>
               {label}
             </NavLink>

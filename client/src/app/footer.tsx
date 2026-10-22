@@ -1,5 +1,7 @@
 
 import { Link } from "react-router";
+import { isLinkVisible } from "@/auth/config";
+import { useAuth } from "@/auth/useAuth";
 
 const SOCIAL_LINKS = [
   {
@@ -66,7 +68,17 @@ const SOCIAL_LINKS = [
   },
 ];
 
+// Members-only links (see MEMBERS_ONLY_PATHS) are hidden until someone signs in.
+const ACCOUNT_LINKS = [
+  { to: "/discover", label: "Name Generator" },
+  { to: "/terms", label: "Terms of use" },
+  { to: "/favorites", label: "Favorites" },
+  { to: "/feedback", label: "Submit Your feedback" },
+];
+
 export default function Footer() {
+  const { isAuthenticated } = useAuth();
+
   return (
     <footer className="site-footer">
       <div className="site-footer__inner">
@@ -107,18 +119,11 @@ export default function Footer() {
         <div className="site-footer__col">
           <h3>My account</h3>
           <ul>
-            <li>
-              <Link to="/discover">Name Generator</Link>
-            </li>
-            <li>
-              <Link to="/terms">Terms of use</Link>
-            </li>
-            <li>
-              <Link to="/favorites">Favorites</Link>
-            </li>
-            <li>
-              <Link to="/feedback">Submit Your feedback</Link>
-            </li>
+            {ACCOUNT_LINKS.filter(({ to }) => isLinkVisible(to, isAuthenticated)).map(({ to, label }) => (
+              <li key={to}>
+                <Link to={to}>{label}</Link>
+              </li>
+            ))}
           </ul>
         </div>
 
